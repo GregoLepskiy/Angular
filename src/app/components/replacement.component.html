@@ -1,0 +1,36 @@
+<h1>Список замен</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()"/>
+<input type="button" value="Назад" class="btn btn-default" [routerLink]="['**']"/>
+<table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+        <tr>
+            <td>OldSymbol</td>
+            <td>NewSymbol</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of replacements">
+            <td>{{r?.oldSymbol}}</td>
+            <td>{{r?.newSymbol}}</td>
+            <td>
+                <button class="btn btn-sm btn-danger" (click)="delete(r)">Удалить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #create>
+    <div class="form-group">
+        <label>OldSymbol</label>
+        <input type="text" maxlength="1" [(ngModel)]="replacement.oldSymbol" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>NewSymbol</label>
+        <input type="text" maxlength="1" [(ngModel)]="replacement.newSymbol" class="form-control"/>
+    </div>
+    <div>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success"/>
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-danger"/>
+    </div>
+</ng-template>

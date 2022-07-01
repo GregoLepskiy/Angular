@@ -1,0 +1,21 @@
+<h1>ВВЕДИТЕ СООБЩЕНИЕ</h1>
+<input type="text" [(ngModel)]="userString.inString" class="form-control"/>
+<div>
+    <input type="button" value="Добавить" class="btn btn-default" (click)="save()"/>
+    <input type="button" value="Символы" class="btn btn-default" [routerLink]="['replacements']"/>
+</div>
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Сообщение</td>
+            <td>Дата</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let us of userStrings">
+            <td>{{us?.inString}}</td>
+            <td>{{us?.date}}</td>
+        </tr>
+    </tbody>
+</table>
